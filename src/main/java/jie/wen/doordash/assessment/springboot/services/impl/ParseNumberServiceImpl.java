@@ -149,11 +149,11 @@ public class ParseNumberServiceImpl implements ParseNumberService {
 
     protected String getNumber(String input) {
         try {
-            String number = StringUtils.strip(input.toLowerCase().replace(Constants.DASH, ""));
+            String number = StringUtils.strip(input.toLowerCase().replace(Constants.DASH, Constants.EMPTY));
 
-            String prefix = number.charAt(0) == '+'? "+" : "";
+            String prefix = number.charAt(0) == Constants.PLUS_CHAR ? Constants.PLUS : Constants.EMPTY;
 
-            if (prefix.equals("+")) {
+            if (prefix.equals(Constants.PLUS)) {
                 number = number.substring(1);
             }
 
