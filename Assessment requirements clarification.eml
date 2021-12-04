@@ -1,0 +1,189 @@
+Delivered-To: wanhohiuying@gmail.com
+Received: by 2002:a2e:6f15:0:0:0:0:0 with SMTP id k21csp3944900ljc;
+        Mon, 29 Nov 2021 13:23:09 -0800 (PST)
+X-Received: by 2002:a17:906:4fcc:: with SMTP id i12mr62465146ejw.309.1638220988964;
+        Mon, 29 Nov 2021 13:23:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638220988; cv=none;
+        d=google.com; s=arc-20160816;
+        b=e7sHyN4b5yv9ux0VDaWdBaxaa7uIjxhm9AgaZKIcyF/0Mzxs6X5ojEq+TO5s8XDInM
+         pr+JWPzzV0hWVLyjdbiPs14Hkqippg7a1tLDOqwyZRKcURo0M8jBY7s7oYrwEznpXerX
+         mczijos47HiDh1KpkU24PFgSiAu12Pi09H2CDVEguFEVyvVufs0/3N4NmDhePAxohstr
+         jHh3uNEUQGYFyrMmlgNqksCP4gO3moIjl019TUfg+YNfwr4M9F6mZw24r67wy8DAa4pI
+         17dXTq5iT+sMLsHpplP5cqvo7sXLGOqBq3ZBK2JUzUcVaVcmHZSfBMGJ+TXNJmjuFV0p
+         qkUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=deIlRMB8LGa4p96pN9HMfhdTM4pFkcPXmVzMM7iyqB8=;
+        b=s3Ce7V0JbMPl/OxisjszpW5JAfgL/Om/kHxyvb9cb9Yzj6BjDsbzP4ZRV4Tyde/eo6
+         UcQOW49leHKQQmeG+xRLEacaJSdfcKEmJsWs0hLTryZAwo4uD59Z1xglQD4Xg02vRkqK
+         lJNBwg2bbAjevYupJFHoehBuuYJunFqfZOcv0HOZWcBD+zD2t3MGzYH3VhnZg0sCcTom
+         fdcM6rTEJ/Q6HG0Yqr2aI3hr6dtXzk9FYX0jkx5OGpkm5ahqI1kJeQzep0+V8s3a2B2M
+         Y+7J2s6TCTFVJtTgtMzbpnSN/uqscHkCDAXqiDUKjOZH7S7UMnHCfMC0+RqtG3m3uGC3
+         Vcmw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@doordash.com header.s=google header.b=VdiaMvDp;
+       spf=pass (google.com: domain of ben.katz@doordash.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ben.katz@doordash.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=doordash.com
+Return-Path: <ben.katz@doordash.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l8sor15271898edb.21.2021.11.29.13.23.08
+        for <wanhohiuying@gmail.com>
+        (Google Transport Security);
+        Mon, 29 Nov 2021 13:23:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of ben.katz@doordash.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@doordash.com header.s=google header.b=VdiaMvDp;
+       spf=pass (google.com: domain of ben.katz@doordash.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ben.katz@doordash.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=doordash.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=doordash.com; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=deIlRMB8LGa4p96pN9HMfhdTM4pFkcPXmVzMM7iyqB8=;
+        b=VdiaMvDpoOves64z0rVK4YB2I5LsVpkIa4p31NlcUNgNeb9vCKJilKD/fm3/lG9Isx
+         OSym+D/GW1FWlkaxbE6CxC8cgevbUxlrWysVXiC4ejtFWeb3IcGH+pA494XsDznuG0ny
+         IdGjC3xg1RUTAeoo3150NgvQdRxDqFc6s77hw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=deIlRMB8LGa4p96pN9HMfhdTM4pFkcPXmVzMM7iyqB8=;
+        b=2g9D0BXhJjOBDGS4EF/oApMvqnwTmUbPBRxzOc7fAYZgc9S0fi1ijb8vGE+/d1HLzy
+         Nw+XmkVWB1enj6Q0cZX2eHO0XNOGvS0Qb9HiKQhaORxcblvY2iIw/RII4xQvXIeRt/g5
+         1Vysz2WhRzM/NBkdNnC2P/zR+qm/GO5xOcuVvpN/6E2QOEMDZFRoWkqKXuVHvi6ARbR5
+         PViyYjHSncqFwUzYrMj0eZAPL2NLh1hzH4lOZQS6JoOY8sxdx9PpcYLsAwRp+lAt0f6i
+         N7Vq3rqxJL6kaUZF1Xe5+GtZrSmFRa6o+Kqm/5YfW+QIpxY0WsWjXmGxUOUWSGXRLLhP
+         9wCw==
+X-Gm-Message-State: AOAM530xSCylWgIoDpycaNSEVU98ZWE+Z/OFb4ard5dpC04gWMIhetKo
+	yCQAOCD12kXObe25EE/sVtmx5H0ZFJ/YLusAb3v67hlCDso=
+X-Google-Smtp-Source: ABdhPJwf8+wHzMa9RSwhDvDje48IbuALv5kUELrSRgq41/CQ0KvbVivB4uBRp8FfGQ0SIZpHi0p9VmZoDlyhaEkIEcU=
+X-Received: by 2002:a05:6402:34d6:: with SMTP id w22mr79523743edc.35.1638220988106;
+ Mon, 29 Nov 2021 13:23:08 -0800 (PST)
+MIME-Version: 1.0
+References: <CALYZPxYygfy+w9RAvAJJDUKKq4o9OsLcdEGR1PatvS-c2x9kJA@mail.gmail.com>
+In-Reply-To: <CALYZPxYygfy+w9RAvAJJDUKKq4o9OsLcdEGR1PatvS-c2x9kJA@mail.gmail.com>
+From: Ben Katz <ben.katz@doordash.com>
+Date: Mon, 29 Nov 2021 13:22:57 -0800
+Message-ID: <CALsv3aKgEb=zhx9x4erzNtqCjOKunYVn0vT-3PkCnsbeSJ8Mxw@mail.gmail.com>
+Subject: Re: Assessment requirements clarification
+To: J Wen <wanhohiuying@gmail.com>
+Cc: engineering-assessment@doordash.com
+Content-Type: multipart/alternative; boundary="0000000000000f62b805d1f40cdf"
+
+--0000000000000f62b805d1f40cdf
+Content-Type: text/plain; charset="UTF-8"
+
+1. Yes, the format should generally match what is described in the doc. You
+should be able to parse types and phone numbers from the input - for any
+issues parsing the input, go ahead and return validation errors. Validation
+error handling is up to you as long as it makes sense, feel free to
+document your assumptions.
+2. Good point about the input potentially being large. Feel free to make
+some reasonable assumptions about what the input size should be and
+validate against those assumptions. In general, let's assume the input is
+small for now.
+
+Thanks,
+Ben
+
+On Sat, Nov 27, 2021 at 11:39 PM J Wen <wanhohiuying@gmail.com> wrote:
+
+> Dear sir/madam,
+>
+> Hello. I am writing to ask for some clarifications of the assessment
+> requirements.
+>
+> 1. Is the API input always with the format "(phone_type) phone_number", do
+> we need to validate the format and if so, what error handling do we need.
+> 2. As I am required to ensure API response time is less than 100ms, may I
+> ask if there are any limitations of the size of the input data or we have
+> to ensure all the response time should be less than 100ms no matter how
+> large the input data is?
+>
+> Best regards,
+> Jie Wen
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "engineering-assessment" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to engineering-assessment+unsubscribe@doordash.com.
+> To view this discussion on the web visit
+> https://groups.google.com/a/doordash.com/d/msgid/engineering-assessment/CALYZPxYygfy%2Bw9RAvAJJDUKKq4o9OsLcdEGR1PatvS-c2x9kJA%40mail.gmail.com
+> <https://groups.google.com/a/doordash.com/d/msgid/engineering-assessment/CALYZPxYygfy%2Bw9RAvAJJDUKKq4o9OsLcdEGR1PatvS-c2x9kJA%40mail.gmail.com?utm_medium=email&utm_source=footer>
+> .
+>
+
+
+-- 
+
+Ben Katz
+Software Engineer
+
+DoorDash.com <http://www.doordash.com/>
+
+--0000000000000f62b805d1f40cdf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">1. Yes, the format should generally match what is describe=
+d in the doc. You should be able to parse types and phone numbers from the =
+input - for any issues parsing the input, go ahead and return validation er=
+rors. Validation error handling is up to you as long as it makes sense, fee=
+l free to document your assumptions.<div>2. Good point about the input pote=
+ntially being large. Feel free to make some reasonable assumptions about wh=
+at the input size should be and validate against those assumptions. In gene=
+ral, let&#39;s assume the input is small for now.<br><br>Thanks,</div><div>=
+Ben</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gma=
+il_attr">On Sat, Nov 27, 2021 at 11:39 PM J Wen &lt;<a href=3D"mailto:wanho=
+hiuying@gmail.com">wanhohiuying@gmail.com</a>&gt; wrote:<br></div><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
+solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Dear sir/madam,<d=
+iv><br></div><div>Hello. I am writing to ask for some clarifications of the=
+ assessment requirements.</div><div><br></div><div>1. Is the API input alwa=
+ys with=C2=A0the format &quot;(phone_type) phone_number&quot;, do we need t=
+o validate the format and if so, what error handling do we need.</div><div>=
+2. As I am required to ensure API response time is less than 100ms, may I a=
+sk if there are any limitations of the size of the input data or we have to=
+ ensure all the response time should be less than 100ms no matter how large=
+ the input data is?</div><div><br></div><div>Best regards,</div><div>Jie We=
+n</div></div>
+
+<p></p>
+
+-- <br>
+You received this message because you are subscribed to the Google Groups &=
+quot;engineering-assessment&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:engineering-assessment+unsubscribe@doordash.com" =
+target=3D"_blank">engineering-assessment+unsubscribe@doordash.com</a>.<br>
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/a/doordash.com/d/msgid/engineering-assessment/CALYZPxYygfy%2Bw9RAvAJJDUK=
+Kq4o9OsLcdEGR1PatvS-c2x9kJA%40mail.gmail.com?utm_medium=3Demail&amp;utm_sou=
+rce=3Dfooter" target=3D"_blank">https://groups.google.com/a/doordash.com/d/=
+msgid/engineering-assessment/CALYZPxYygfy%2Bw9RAvAJJDUKKq4o9OsLcdEGR1PatvS-=
+c2x9kJA%40mail.gmail.com</a>.<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><div><span><span style=3D"font-=
+size:10pt;font-family:Arial;color:rgb(136,136,136);background-color:transpa=
+rent;font-weight:700;vertical-align:baseline;white-space:pre-wrap"><img src=
+=3D"https://s3.us-west-2.amazonaws.com/doordash-static/media/email-signatur=
+es/doordash-icon.png"><br></span></span></div><span><span style=3D"font-siz=
+e:10pt;font-family:Arial;color:rgb(136,136,136);background-color:transparen=
+t;font-weight:700;vertical-align:baseline;white-space:pre-wrap">Ben Katz</s=
+pan><span style=3D"font-size:10pt;font-family:Arial;color:rgb(136,136,136);=
+background-color:transparent;font-weight:700;vertical-align:baseline;white-=
+space:pre-wrap"><br></span><span style=3D"font-size:10pt;font-family:Arial;=
+color:rgb(136,136,136);background-color:transparent;vertical-align:baseline=
+;white-space:pre-wrap">Software Engineer</span><span style=3D"font-size:10p=
+t;font-family:Arial;color:rgb(136,136,136);background-color:transparent;ver=
+tical-align:baseline;white-space:pre-wrap"><br></span><span style=3D"font-s=
+ize:10pt;font-family:Arial;color:rgb(136,136,136);background-color:transpar=
+ent;vertical-align:baseline;white-space:pre-wrap"><br></span><a href=3D"htt=
+p://www.doordash.com/" target=3D"_blank"><span style=3D"font-size:10pt;font=
+-family:Arial;color:rgb(153,153,153);background-color:transparent;vertical-=
+align:baseline;white-space:pre-wrap">DoorDash.com</span></a></span><br></di=
+v></div>
+
+--0000000000000f62b805d1f40cdf--

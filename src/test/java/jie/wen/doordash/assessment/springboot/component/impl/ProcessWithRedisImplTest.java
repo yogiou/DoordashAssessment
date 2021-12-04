@@ -1,4 +1,4 @@
-package jie.wen.doordash.assessment.springboot.services.impl;
+package jie.wen.doordash.assessment.springboot.component.impl;
 
 import jie.wen.doordash.assessment.springboot.data.dto.PhoneNumberResponseDTO;
 import org.junit.jupiter.api.Assertions;
@@ -9,44 +9,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
-class ParseNumberServiceImplTest {
+class ProcessWithRedisImplTest {
     @Autowired
-    private ParseNumberServiceImpl parseNumberService;
+    private ProcessWithRedisImpl processWithRedis;
 
-    @Test
-    void testGetNumber() {
-        Assertions.assertEquals("1231232123", parseNumberService.getNumber("123-1232-123"));
-    }
 
-    @Test
-    void testGetType() {
-        Assertions.assertEquals("home", parseNumberService.getType("HOME"));
-    }
-
-    @Test
-    void testProcessWithDB() {
-        List<PhoneNumberResponseDTO> phoneNumberResponseDTOList = new ArrayList<>();
-        String input = "(Home) 415-415-4155 (Cell) 415-123-4567(Home) 415-415-4154 ";
-
-        List<String> expected = new ArrayList<>();
-        expected.add("4154154155_home");
-        expected.add("4151234567_cell");
-        expected.add("4154154154_home");
-
-        List<String> actual = parseNumberService.processInput(input, phoneNumberResponseDTOList);
-
-        for (int i = 0; i < expected.size(); i++) {
-            String expect = expected.get(i);
-            String act = actual.get(i);
-            Assertions.assertEquals(expect, act);
-        }
-    }
 
     @Test
     void testProcessWithRedis() {
         String input = "(Home) 415-415-4155 (Cell) 415-123-4567(Home) 415-415-4154 (Home) 415-415-4155 ";
-        List<PhoneNumberResponseDTO> actual = parseNumberService.processWithRedis(input);
+        List<PhoneNumberResponseDTO> actual = processWithRedis.processWithRedis(input);
 
         List<PhoneNumberResponseDTO> expected = new ArrayList<>();
         PhoneNumberResponseDTO phoneNumberResponseDTO1 = new PhoneNumberResponseDTO();
